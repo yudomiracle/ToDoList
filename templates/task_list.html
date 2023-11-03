@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for list in list %}
+    <style>
+        .list-info {
+            display: inline;
+            margin-right: 10px; /* Опционально, если нужно добавить отступ между элементами */
+        }
+    </style>
+    <h2 class="list-info">{{ list.name }} - </h2><h2 class="list-info">{{ list.date }}</h2>
+    <br><br> <br>
+    {% endfor %}
+</body>
+</html>
