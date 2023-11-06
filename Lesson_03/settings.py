@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     #apps
     'ToDoList',
+
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

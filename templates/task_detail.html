@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h2> Ваша задача - {{ list.name }}</h2>
-    <h3> Описание задачи - {{ list.description }}</h3>
-    <h3> Дедлайн для выполнения - {{ list.date }} </h3>
-</body>
-</html>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">{{ list.name }}</h1>
+                <p class="card-text">Email: {{ list.description }}</p>
+                <p class="card-text">Bio: {{ list.date }}</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" href="{% url 'task_update' pk=list.pk %}">Редактировать</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

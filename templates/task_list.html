@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% for list in list %}
-    <style>
-        .list-info {
-            display: inline;
-            margin-right: 10px; /* Опционально, если нужно добавить отступ между элементами */
-        }
-    </style>
-    <h2 class="list-info">{{ list.name }} - </h2><h2 class="list-info">{{ list.date }}</h2>
-    <br><br> <br>
-    {% endfor %}
-</body>
-</html>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% for list in list %}
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne{{ list.id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {{list.name}}
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne{{ list.id }}" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+          Дата:{{ list.date }} <br><br> <a href="{% url 'task_detail' pk=list.pk %}"><button type="button" class="btn btn-primary"> Узнать больше </button></a>  <a href="{% url 'task_delete' pk=list.pk %}"><button type="button" class="btn btn-danger" > Удалить </button></a>
+      </div>
+    </div>
+  </div>
+    </div>
+{% endfor %}
+{% bootstrap_pagination page_obj %}
+{% endblock %}
+
